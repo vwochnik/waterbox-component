@@ -10,17 +10,26 @@ export default function renderer(ctx, options) {
     const rect = { x: borderWidth/2, y: borderWidth/2, w: width - borderWidth - 1, h: height - borderWidth - 1 },
           size = { w: rect.w, h: rect.w/2 };
 
-    {
-        const area = { x: rect.x, y: rect.y + rect.h - size.h, w: size.w, h: size.h };
-        rhombusPath(ctx, area);
-        
-        ctx.fillStyle = backgroundColor;
-        ctx.strokeStyle = borderColor;
-        ctx.lineWidth = borderWidth;
-        ctx.stroke(); // Draw it
+    let area;
 
-        console.info(';test');
-    }
+    area = { x: rect.x, y: rect.y + rect.h - size.h, w: size.w, h: size.h };
+    rhombusPath(ctx, area);
+    
+    ctx.fillStyle = backgroundColor;
+    ctx.strokeStyle = borderColor;
+    ctx.lineWidth = borderWidth;
+    ctx.stroke();
+    ctx.fill();
+
+    area = { x: rect.x, y: rect.y, w: size.w/2, h: rect.h };
+    wallPath(ctx, area, size, 0, -size.h/2);
+    ctx.stroke();
+    ctx.fill();
+
+    area = { x: rect.x+rect.w/2, y: rect.y, w: size.w/2, h: rect.h };
+    wallPath(ctx, area, size, -size.h/2, 0);
+    ctx.stroke();
+    ctx.fill();
 }
 
 function rhombusPath(ctx, area) {
@@ -29,6 +38,15 @@ function rhombusPath(ctx, area) {
     ctx.lineTo(area.x+area.w, area.y+area.h/2);
     ctx.lineTo(area.x+area.w/2, area.y+area.h);
     ctx.lineTo(area.x,area.y+area.h/2);
+    ctx.closePath();
+}
+
+function wallPath(ctx, area, size, leftOffset, rightOffset) {
+    ctx.beginPath();
+    ctx.moveTo(area.x, area.y+size.h/2+leftOffset);
+    ctx.lineTo(area.x+area.w, area.y+size.h/2+rightOffset);
+    ctx.lineTo(area.x+area.w, area.y+area.h-size.h/2+rightOffset);
+    ctx.lineTo(area.x, area.y+area.h-size.h/2+leftOffset);
     ctx.closePath();
 }
 
