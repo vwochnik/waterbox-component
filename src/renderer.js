@@ -1,11 +1,17 @@
-import tinycolor from 'tinycolor2';
+import { TinyColor } from '@ctrl/tinycolor';
 
 export const OPTIONS = ['width', 'height', 'borderColor', 'fillColor', 'backgroundColor', 'borderWidth', 'separators', 'drawTop', 'value'];
 
 export default function renderer(ctx, options) {
     const { width, height, borderColor, fillColor, backgroundColor, borderWidth, separators, drawTop, value } = options;
 
+    const backgroundColorLight = (new TinyColor(backgroundColor)).lighten(20).toString(),
+          backgroundColorDark = (new TinyColor(backgroundColor)).darken(20).toString()
+
     ctx.clearRect(0, 0, options.width, options.height);
+
+    ctx.strokeStyle = borderColor;
+    ctx.lineWidth = borderWidth;
 
     const rect = { x: borderWidth/2, y: borderWidth/2, w: width - borderWidth - 1, h: height - borderWidth - 1 },
           size = { w: rect.w, h: rect.w/2 };
@@ -14,22 +20,21 @@ export default function renderer(ctx, options) {
 
     area = { x: rect.x, y: rect.y + rect.h - size.h, w: size.w, h: size.h };
     rhombusPath(ctx, area);
-    
     ctx.fillStyle = backgroundColor;
-    ctx.strokeStyle = borderColor;
-    ctx.lineWidth = borderWidth;
-    ctx.stroke();
     ctx.fill();
+    ctx.stroke();
 
     area = { x: rect.x, y: rect.y, w: size.w/2, h: rect.h };
     wallPath(ctx, area, size, 0, -size.h/2);
-    ctx.stroke();
+    ctx.fillStyle = backgroundColorLight;
     ctx.fill();
+    ctx.stroke();
 
     area = { x: rect.x+rect.w/2, y: rect.y, w: size.w/2, h: rect.h };
     wallPath(ctx, area, size, -size.h/2, 0);
-    ctx.stroke();
+    ctx.fillStyle = backgroundColorDark;
     ctx.fill();
+    ctx.stroke();
 }
 
 function rhombusPath(ctx, area) {

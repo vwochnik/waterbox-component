@@ -14,16 +14,16 @@ export default class WaterBox extends LitElement {
   value = 50;
 
   @property({ type: String, attribute: 'border-color' })
-  borderColor = '#888';
+  borderColor = 'rgba(127,127,127,0.8)';
 
   @property({ type: Number, attribute: 'border-width' })
   borderWidth = 1;
 
   @property({ type: String, attribute: 'fill-color' })
-  fillColor = '#ddf';
+  fillColor = 'rgba(192,192,225,0.6)';
 
   @property({ type: String, attribute: 'background-color' })
-  backgroundColor = '#aaa';
+  backgroundColor = 'rgba(128,128,128,0.4)';
 
   @property({ type: Number })
   separators = 5;
