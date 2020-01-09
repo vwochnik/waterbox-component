@@ -1,43 +1,38 @@
-import tinycolor from 'tinycolor';
+import tinycolor from 'tinycolor2';
 
 export const OPTIONS = ['width', 'height', 'borderColor', 'fillColor', 'backgroundColor', 'borderWidth', 'separators', 'drawTop', 'value'];
 
 export default function renderer(ctx, options) {
-	console.info({options});
+    const { width, height, borderColor, fillColor, backgroundColor, borderWidth, separators, drawTop, value } = options;
+
+    ctx.clearRect(0, 0, options.width, options.height);
+
+    const rect = { x: borderWidth/2, y: borderWidth/2, w: width - borderWidth - 1, h: height - borderWidth - 1 },
+          size = { w: rect.w, h: rect.w/2 };
+
+    {
+        const area = { x: rect.x, y: rect.y + rect.h - size.h, w: size.w, h: size.h };
+        rhombusPath(ctx, area);
+        
+        ctx.fillStyle = backgroundColor;
+        ctx.strokeStyle = borderColor;
+        ctx.lineWidth = borderWidth;
+        ctx.stroke(); // Draw it
+
+        console.info(';test');
+    }
+}
+
+function rhombusPath(ctx, area) {
+    ctx.beginPath();
+    ctx.moveTo(area.x+area.w/2, area.y);
+    ctx.lineTo(area.x+area.w, area.y+area.h/2);
+    ctx.lineTo(area.x+area.w/2, area.y+area.h);
+    ctx.lineTo(area.x,area.y+area.h/2);
+    ctx.closePath();
 }
 
 /*
-            Graphics g = e.Graphics;
-            g.SmoothingMode = SmoothingMode.HighQuality;
-
-            // all containing rectangle
-            RectangleF rect = new RectangleF(BorderWidth / 2F, BorderWidth / 2F, Width - BorderWidth - 1, Height - BorderWidth - 1);
-
-            // isometric size of the box
-            SizeF size = new SizeF(rect.Width, rect.Width / 2F);
-
-            #region draw bottom rectangle
-            {
-                // the isometric area containing the rhombus
-                RectangleF area = new RectangleF(
-                    rect.X, rect.Y + rect.Height - size.Height,
-                    size.Width, size.Height);
-
-                // the path containing figure of rhombus
-                GraphicsPath path = new GraphicsPath();
-                path.AddLine(
-                    area.X, area.Y + area.Height / 2F,
-                    area.X + area.Width / 2F, area.Y);
-                path.AddLine(
-                    area.X + area.Width, area.Y + area.Height / 2F,
-                    area.X + area.Width / 2F, area.Y + area.Height);
-                path.CloseFigure();
-
-                // draw path
-                g.FillPath(new SolidBrush(MainBackColor), path);
-                g.DrawPath(new Pen(BorderColor, BorderWidth), path);
-            }
-            #endregion
             #region draw bottom wall
             {
                 // the isometric background box wall

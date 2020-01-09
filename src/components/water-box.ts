@@ -13,22 +13,22 @@ export default class WaterBox extends LitElement {
   @property({ type: Number })
   value = 50;
 
-  @property({ type: String })
-  borderColor = 'black'
+  @property({ type: String, attribute: 'border-color' })
+  borderColor = '#888';
 
-  @property({ type: Number })
+  @property({ type: Number, attribute: 'border-width' })
   borderWidth = 1;
 
-  @property({ type: String })
-  fillColor = 'black'
+  @property({ type: String, attribute: 'fill-color' })
+  fillColor = '#ddf';
 
-  @property({ type: String })
-  backgroundColor = 'black'
+  @property({ type: String, attribute: 'background-color' })
+  backgroundColor = '#aaa';
 
   @property({ type: Number })
   separators = 5;
 
-  @property({ type: Boolean })
+  @property({ type: Boolean, attribute: 'draw-top' })
   drawTop = true;
 
   render() {
