@@ -5,8 +5,10 @@ export const OPTIONS = ['width', 'height', 'borderColor', 'fillColor', 'backgrou
 export default function renderer(ctx, options) {
     const { width, height, borderColor, fillColor, backgroundColor, borderWidth, separators, drawTop, value } = options;
 
-    const backgroundColorLight = (new TinyColor(backgroundColor)).lighten(20).toString(),
-          backgroundColorDark = (new TinyColor(backgroundColor)).darken(20).toString()
+    const backgroundColorLight = (new TinyColor(backgroundColor)).brighten(20).toString(),
+          backgroundColorDark = (new TinyColor(backgroundColor)).darken(20).toString(),
+          fillColorLight = (new TinyColor(fillColor)).brighten(20).toString(),
+          fillColorDark = (new TinyColor(fillColor)).darken(20).toString();
 
     ctx.clearRect(0, 0, options.width, options.height);
 
@@ -35,6 +37,19 @@ export default function renderer(ctx, options) {
     ctx.fillStyle = backgroundColorDark;
     ctx.fill();
     ctx.stroke();
+
+
+    area = { x: rect.x, y: rect.y, w: size.w/2, h: rect.h };
+    wallPath(ctx, area, size, 0, size.h/2);
+    ctx.fillStyle = fillColorDark;
+    ctx.fill();
+    ctx.stroke();
+
+    area = { x: rect.x+rect.w/2, y: rect.y, w: size.w/2, h: rect.h };
+    wallPath(ctx, area, size, size.h/2, 0);
+    ctx.fillStyle = fillColorLight;
+    ctx.fill();
+    ctx.stroke();
 }
 
 function rhombusPath(ctx, area) {
@@ -56,40 +71,6 @@ function wallPath(ctx, area, size, leftOffset, rightOffset) {
 }
 
 /*
-            #region draw bottom wall
-            {
-                // the isometric background box wall
-                // the area is hall, then rect
-                GraphicsPath path = new GraphicsPath();
-                path.AddLine(
-                    rect.X, rect.Y + size.Height / 2F,
-                    rect.X + rect.Width / 2F, rect.Y);
-                path.AddLine(
-                    rect.X + rect.Width / 2F, rect.Y,
-                    rect.X + rect.Width, rect.Y + size.Height / 2F);
-                path.AddLine(
-                    rect.X + rect.Width, rect.Y + rect.Height - size.Height / 2F,
-                    rect.X + rect.Width / 2F, rect.Y + rect.Height - size.Height);
-                path.AddLine(
-                    rect.X + rect.Width / 2F, rect.Y + rect.Height - size.Height,
-                    rect.X, rect.Y + rect.Height - size.Height / 2F);
-                path.CloseFigure();
-
-                // draw path, with light and dark background color
-                g.SetClip(new RectangleF(rect.X, rect.Y, rect.Width / 2F, rect.Height));
-                g.FillPath(new SolidBrush(LightBackColor), path);
-                g.SetClip(new RectangleF(rect.X + rect.Width / 2F, rect.Y, rect.Width / 2F, rect.Height));
-                g.FillPath(new SolidBrush(DarkBackColor), path);
-                g.ResetClip();
-                g.DrawPath(new Pen(BorderColor, BorderWidth), path);
-            }
-            #endregion
-            #region draw back line
-            // draws background wall's edge line
-            g.DrawLine(new Pen(BorderColor, BorderWidth),
-                rect.X + rect.Width / 2F, rect.Y,
-                rect.X + rect.Width / 2F, rect.Y + rect.Height - size.Height);
-            #endregion
             #region draw scala
             // draws scala each 100 / separators percentual step
             if (Separators > 0)
