@@ -1,6 +1,29 @@
-<p align="center">
+<div align="center">
 # Waterbox Component
 
 ![Waterbox](preview.png?raw=true "Waterbox")
-</p>
+</div>
 
+> A simple web component displaying an isometric water box.
+
+## Installation
+
+You can use NPM to install this component.
+
+```
+npm i --save waterbox-component
+```
+
+## Usage
+
+If not done by your bundler, load the component:
+
+```
+<script type="module" src="node_modules/waterbox-component/dist/bundle.js"></script>
+```
+
+You can now use the component in your HTML:
+
+```
+<water-box value="50"></water-box>
+```

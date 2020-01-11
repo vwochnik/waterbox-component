@@ -1,7 +1,7 @@
 {
   "name": "waterbox-component",
   "version": "0.1.0",
-  "description": "A waterbox web component",
+  "description": "A simple web component displaying an isometric water box.",
   "main": "dist/bundle.js",
   "scripts": {
     "build": "webpack",
