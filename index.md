@@ -1,9 +1,27 @@
 ---
 layout: default
 ---
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+> A simple web component displaying an isometric water box.
+
+## Installation
+
+You can use NPM to install this component.
+
+```
+npm i --save waterbox-component
+```
+
+## Usage
+
+If not done by your bundler, load the component:
+
+```
+<script type="module" src="node_modules/waterbox-component/dist/bundle.js"></script>
+```
+
+You can now use the component in your HTML:
+
+```
+<water-box width="100" height="150" value="50"></water-box>
+```
