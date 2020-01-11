@@ -51,6 +51,36 @@ export default function renderer(ctx, options) {
     ctx.fillStyle = fillColorLight;
     ctx.fill();
     ctx.stroke();
+
+    if (value > 0) {
+        area = { x: rect.x, y: rect.y + rect.h - fillHeight, w: size.w, h: size.h };
+        rhombusPath(ctx, area);
+        ctx.fillStyle = fillColor;
+        ctx.fill();
+        ctx.stroke();
+    }
+
+    if (!drawTop) {
+        return;
+    }
+
+    area = { x: rect.x, y: rect.y, w: size.w/2, h: rect.h };
+    wallPath(ctx, area, size, 0, size.h/2);
+    ctx.fillStyle = 'transparent';
+    ctx.fill();
+    ctx.stroke();
+
+    area = { x: rect.x+rect.w/2, y: rect.y, w: size.w/2, h: rect.h };
+    wallPath(ctx, area, size, size.h/2, 0);
+    ctx.fillStyle = 'transparent';
+    ctx.fill();
+    ctx.stroke();
+
+    area = { x: rect.x, y: rect.y, w: size.w, h: size.h };
+    rhombusPath(ctx, area);
+    ctx.fillStyle = backgroundColor;
+    ctx.fill();
+    ctx.stroke();
 }
 
 function rhombusPath(ctx, area) {

@@ -29,7 +29,7 @@ export default class WaterBox extends LitElement {
   separators = 5;
 
   @property({ type: Boolean, attribute: 'draw-top' })
-  drawTop = true;
+  drawTop = false;
 
   render() {
     return html`<canvas width="${this.width}" height="${this.height}"></canvas>`;
