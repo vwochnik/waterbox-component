@@ -38,7 +38,7 @@ export default function renderer(ctx, options) {
     ctx.fill();
     ctx.stroke();
 
-    if (separators > 0) {
+    if (separators > 1) {
         const step = 100.0/separators;
 
         for (let s = step; s < 100.0; s += step) {
