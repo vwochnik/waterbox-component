@@ -1,0 +1,17 @@
+{
+  "name": "waterbox-component",
+  "description": "A waterbox web component",
+  "main": "dist/bundle.js",
+  "authors": [
+    "Vincent Wochnik <v.wochnik@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/vwochnik/waterbox-component",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
