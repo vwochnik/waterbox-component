@@ -1,14 +1,14 @@
 {
-  "name": "lit-element-webpack-ts-sample",
+  "name": "waterbox-component",
   "version": "0.1.0",
-  "description": "A lit-element typescript boilerplate, packed with webpack",
+  "description": "A waterbox web component",
   "main": "dist/bundle.js",
   "scripts": {
     "build": "webpack",
     "test": "npm run build && node serve.js",
     "dev": "webpack-dev-server"
   },
-  "author": "lexffe",
+  "author": "Vincent Wochnik <v.wochnik@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^12.12.17",
