@@ -38,14 +38,15 @@ export default function renderer(ctx, options) {
     ctx.fill();
     ctx.stroke();
 
+    const fillHeight = size.h + (value / 100.0 * (rect.h - size.h));
 
-    area = { x: rect.x, y: rect.y, w: size.w/2, h: rect.h };
+    area = { x: rect.x, y: rect.y + rect.h - fillHeight, w: size.w/2, h: fillHeight };
     wallPath(ctx, area, size, 0, size.h/2);
     ctx.fillStyle = fillColorDark;
     ctx.fill();
     ctx.stroke();
 
-    area = { x: rect.x+rect.w/2, y: rect.y, w: size.w/2, h: rect.h };
+    area = { x: rect.x+rect.w/2, y: rect.y + rect.h - fillHeight, w: size.w/2, h: fillHeight };
     wallPath(ctx, area, size, size.h/2, 0);
     ctx.fillStyle = fillColorLight;
     ctx.fill();
