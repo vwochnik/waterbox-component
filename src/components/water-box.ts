@@ -1,4 +1,4 @@
-import { html, LitElement, customElement, property, css } from 'lit-element';
+import { html, LitElement, customElement, property } from 'lit-element';
 import renderer, { OPTIONS } from '../renderer';
 
 @customElement('water-box')
@@ -30,6 +30,9 @@ export default class WaterBox extends LitElement {
 
   @property({ type: Boolean, attribute: 'draw-top' })
   drawTop = false;
+
+  @property({ type: Number })
+  contrast = 20;
 
   render() {
     return html`<canvas width="${this.width}" height="${this.height}"></canvas>`;
