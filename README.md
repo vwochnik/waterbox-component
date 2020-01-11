@@ -1,6 +1,6 @@
 <p align="center">
 # Waterbox Component
 
-![Waterbox](raw/master/preview.png "Waterbox")
+![Waterbox](preview.png?raw=true "Waterbox")
 </p>
 
