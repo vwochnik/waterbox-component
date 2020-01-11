@@ -10,11 +10,19 @@
 <style>
 </style>
     <style>
+      * {
+        box-sizing: border-box;
+      }
       body {
         color: #303034;
         background-color: #ebebef;
         font-family: sans-serif;
         margin: 0;
+      }
+      .header {
+        background: #404048;
+        padding: 1rem 0;
+        color: #a0a0a8;
       }
       h1 {
         text-align: center;
@@ -23,13 +31,15 @@
     		display: flex;
     		flex-direction: row;
         justify-content: center;
-        background-color: #f0f0f0;
-        border: 1px solid #a0a0aa;
+        background-color: #fff;
         padding: 2rem 0;
     	}
     	.box {
     		margin: 0 1rem;
     	}
+      .body-wrapper {
+        background-color: #e0e0e8;
+      }
       .markdown-body {
         box-sizing: border-box;
         min-width: 200px;
@@ -45,7 +55,9 @@
     </style>
   </head>
   <body>
-    <h1>Waterbox Component</h1>
+    <div class="header">
+      <h1>Waterbox Component</h1>
+    </div>
   	<div class="boxes">
   		<div class="box">
 		  	<water-box fill-color="rgba(127,127,224,0.8)" separators="10" value="0" width="80" height="120"></water-box>
@@ -60,8 +72,9 @@
 		  	<water-box background-color="rgba(64,64,64,0.8)" fill-color="rgba(192,192,192,0.8)" separators="2" value="60" width="80" height="120"></water-box>
   		</div>
   	</div>
-  	<div class="markdown-body">
-  		<blockquote>
+    <div class="body-wrapper">
+      <div class="markdown-body">
+        <blockquote>
   <p>A simple web component displaying an isometric water box.</p>
 </blockquote>
 
@@ -116,7 +129,8 @@
 <h2 id="contrast--contrast-number"><code class="highlighter-rouge">contrast</code> / <code class="highlighter-rouge">contrast</code> (Number)</h2>
 <p>Contast of light/dark colors. Example: <code class="highlighter-rouge">10</code></p>
 
-  	</div>
+      </div>
+    </div>
     <script type="text/javascript">
       const boxes = document.querySelectorAll("water-box");
       console.info(boxes);
