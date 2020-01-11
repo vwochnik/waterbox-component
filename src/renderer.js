@@ -1,14 +1,14 @@
-import { TinyColor } from '@ctrl/tinycolor';
+import { lighten, darken } from './color';
 
 export const OPTIONS = ['width', 'height', 'borderColor', 'fillColor', 'backgroundColor', 'borderWidth', 'separators', 'drawTop', 'value'];
 
 export default function renderer(ctx, options) {
     const { width, height, borderColor, fillColor, backgroundColor, borderWidth, separators, drawTop, value } = options;
 
-    const backgroundColorLight = (new TinyColor(backgroundColor)).brighten(20).toString(),
-          backgroundColorDark = (new TinyColor(backgroundColor)).darken(20).toString(),
-          fillColorLight = (new TinyColor(fillColor)).brighten(20).toString(),
-          fillColorDark = (new TinyColor(fillColor)).darken(20).toString();
+    const backgroundColorLight = lighten(backgroundColor, 30),
+          backgroundColorDark = darken(backgroundColor, 30),
+          fillColorLight = lighten(fillColor, 30),
+          fillColorDark = darken(fillColor, 10);
 
     ctx.clearRect(0, 0, options.width, options.height);
 
