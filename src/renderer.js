@@ -18,22 +18,20 @@ export default function renderer(ctx, options) {
     const rect = { x: borderWidth/2, y: borderWidth/2, w: width - borderWidth - 1, h: height - borderWidth - 1 },
           size = { w: rect.w, h: rect.w/2 };
 
-    let area;
-
-    area = { x: rect.x, y: rect.y + rect.h - size.h, w: size.w, h: size.h };
-    rhombusPath(ctx, area);
+    const bottomRhombusArea = { x: rect.x, y: rect.y + rect.h - size.h, w: size.w, h: size.h };
+    rhombusPath(ctx, bottomRhombusArea);
     ctx.fillStyle = backgroundColor;
     ctx.fill();
     ctx.stroke();
 
-    area = { x: rect.x, y: rect.y, w: size.w/2, h: rect.h };
-    wallPath(ctx, area, size, 0, -size.h/2);
+    const leftBackWallArea = { x: rect.x, y: rect.y, w: size.w/2, h: rect.h };
+    wallPath(ctx, leftBackWallArea, size, 0, -size.h/2);
     ctx.fillStyle = backgroundColorLight;
     ctx.fill();
     ctx.stroke();
 
-    area = { x: rect.x+rect.w/2, y: rect.y, w: size.w/2, h: rect.h };
-    wallPath(ctx, area, size, -size.h/2, 0);
+    const rightBackWallArea = { x: rect.x+rect.w/2, y: rect.y, w: size.w/2, h: rect.h };
+    wallPath(ctx, rightBackWallArea, size, -size.h/2, 0);
     ctx.fillStyle = backgroundColorDark;
     ctx.fill();
     ctx.stroke();
@@ -42,29 +40,30 @@ export default function renderer(ctx, options) {
         const step = 100.0/separators;
 
         for (let s = step; s < 100.0; s += step) {
-            area = { x: rect.x, y: rect.y + rect.h - size.h - (rect.h - size.h) * s/100.0, w: size.w, h: size.h };
-            separatorPath(ctx, area);
+            const separatorArea = { x: rect.x, y: rect.y + rect.h - size.h - (rect.h - size.h) * s/100.0, w: size.w, h: size.h };
+            separatorPath(ctx, separatorArea);
             ctx.stroke();
         }
     }
 
-    const fillHeight = size.h + (value / 100.0 * (rect.h - size.h));
-
-    area = { x: rect.x, y: rect.y + rect.h - fillHeight, w: size.w/2, h: fillHeight };
-    wallPath(ctx, area, size, 0, size.h/2);
-    ctx.fillStyle = fillColorDark;
-    ctx.fill();
-    ctx.stroke();
-
-    area = { x: rect.x+rect.w/2, y: rect.y + rect.h - fillHeight, w: size.w/2, h: fillHeight };
-    wallPath(ctx, area, size, size.h/2, 0);
-    ctx.fillStyle = fillColorLight;
-    ctx.fill();
-    ctx.stroke();
 
     if (value > 0) {
-        area = { x: rect.x, y: rect.y + rect.h - fillHeight, w: size.w, h: size.h };
-        rhombusPath(ctx, area);
+        const fillHeight = size.h + (value / 100.0 * (rect.h - size.h));
+
+        const leftFillWallArea = { x: rect.x, y: rect.y + rect.h - fillHeight, w: size.w/2, h: fillHeight };
+        wallPath(ctx, leftFillWallArea, size, 0, size.h/2);
+        ctx.fillStyle = fillColorDark;
+        ctx.fill();
+        ctx.stroke();
+
+        const rightFillWallArea = { x: rect.x+rect.w/2, y: rect.y + rect.h - fillHeight, w: size.w/2, h: fillHeight };
+        wallPath(ctx, rightFillWallArea, size, size.h/2, 0);
+        ctx.fillStyle = fillColorLight;
+        ctx.fill();
+        ctx.stroke();
+
+        const fillTopRhombusArea = { x: rect.x, y: rect.y + rect.h - fillHeight, w: size.w, h: size.h };
+        rhombusPath(ctx, fillTopRhombusArea);
         ctx.fillStyle = fillColor;
         ctx.fill();
         ctx.stroke();
@@ -74,16 +73,16 @@ export default function renderer(ctx, options) {
         return;
     }
 
-    area = { x: rect.x, y: rect.y, w: size.w/2, h: rect.h };
-    wallPath(ctx, area, size, 0, size.h/2);
+    const leftFrontWallArea = { x: rect.x, y: rect.y, w: size.w/2, h: rect.h };
+    wallPath(ctx, leftFrontWallArea, size, 0, size.h/2);
     ctx.stroke();
 
-    area = { x: rect.x+rect.w/2, y: rect.y, w: size.w/2, h: rect.h };
-    wallPath(ctx, area, size, size.h/2, 0);
+    const rightFrontWallArea = { x: rect.x+rect.w/2, y: rect.y, w: size.w/2, h: rect.h };
+    wallPath(ctx, rightFrontWallArea, size, size.h/2, 0);
     ctx.stroke();
 
-    area = { x: rect.x, y: rect.y, w: size.w, h: size.h };
-    rhombusPath(ctx, area);
+    const topRhombusArea = { x: rect.x, y: rect.y, w: size.w, h: size.h };
+    rhombusPath(ctx, topRhombusArea);
     ctx.fillStyle = backgroundColor;
     ctx.fill();
     ctx.stroke();
