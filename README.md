@@ -1,5 +1,5 @@
 <div align="center">
-# Waterbox Component
+<h1>Waterbox Component</h1>
 
 ![Waterbox](preview.png?raw=true "Waterbox")
 </div>
@@ -25,5 +25,5 @@ If not done by your bundler, load the component:
 You can now use the component in your HTML:
 
 ```
-<water-box value="50"></water-box>
+<water-box width="100" height="150" value="50"></water-box>
 ```
