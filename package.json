@@ -1,6 +1,6 @@
 {
   "name": "lit-element-webpack-ts-sample",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "A lit-element typescript boilerplate, packed with webpack",
   "main": "dist/bundle.js",
   "scripts": {

@@ -39,6 +39,7 @@ export default function renderer(ctx: CanvasRenderingContext2D, options: Renderi
 
     ctx.strokeStyle = borderColor;
     ctx.lineWidth = borderWidth;
+    ctx.lineCap = "round";
 
     const rect: Area = { x: borderWidth/2, y: borderWidth/2, w: width - borderWidth - 1, h: height - borderWidth - 1 },
           size: Size = { w: rect.w, h: rect.w/2 };
