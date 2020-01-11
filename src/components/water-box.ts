@@ -20,7 +20,7 @@ export default class WaterBox extends LitElement {
   borderWidth: number = 1;
 
   @property({ type: String, attribute: 'fill-color' })
-  fillColor: string = 'rgba(32,158,224,0.8)';
+  fillColor: string = 'rgba(127,127,224,0.8)';
 
   @property({ type: String, attribute: 'background-color' })
   backgroundColor: string = 'rgba(128,128,128,0.4)';
