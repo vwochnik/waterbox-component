@@ -1,5 +1,5 @@
 import { html, LitElement, customElement, property } from 'lit-element';
-import renderer, { OPTIONS } from '../renderer';
+import renderer, { OPTIONS, RenderingOptions } from '../renderer';
 
 @customElement('water-box')
 export default class WaterBox extends LitElement {
@@ -39,9 +39,13 @@ export default class WaterBox extends LitElement {
   }
 
   updated() {
-  	const canvas = this.shadowRoot.querySelector("canvas");
-  	const ctx = canvas.getContext('2d');
-    const options = OPTIONS.reduce((obj, option) => { obj[option] = this[option]; return obj; }, {});
-  	renderer(ctx, options);
+    if (this.shadowRoot !== null) {
+      const canvas = <HTMLCanvasElement> this.shadowRoot.querySelector("canvas");
+      if (canvas !== null) {
+        const ctx = <CanvasRenderingContext2D> canvas.getContext("2d");
+        const options = <RenderingOptions> OPTIONS.reduce((obj, option) => { obj[option] = this[option]; return obj; }, {});
+        renderer(ctx, options);
+      }
+    }
   }
 }

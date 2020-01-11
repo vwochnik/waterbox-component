@@ -1,6 +1,6 @@
 import { lighten, darken } from './color';
 
-interface RenderingOptions {
+export interface RenderingOptions {
     width: number,
     height: number,
     borderColor: string,
