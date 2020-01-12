@@ -28,13 +28,18 @@ You can now use the component in your HTML:
 <water-box width="100" height="150" value="50"></water-box>
 ```
 
+## Dimensions
+
+This component is responsive. Simply set its `width` and `height` via CSS.
+
+```
+water-box {
+  width: 100px;
+  height: 180px;
+}
+```
+
 ## Properties / Attributes
-
-## `width` / `width` (Number)
-Width of component in pixels. Example: `100`
-
-## `height` / `height` (Number)
-Height of component in pixels. Example: `200`
 
 ## `value` / `value` (Number)
 Percentual fill level of water. Example: `50`

@@ -1,6 +1,6 @@
 {
   "name": "waterbox-component",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A simple web component displaying an isometric water box.",
   "main": "dist/bundle.js",
   "scripts": {
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "^2.6.0",
+    "@juggle/resize-observer": "^3.0.2",
     "lit-element": "^2.2.1"
   }
 }

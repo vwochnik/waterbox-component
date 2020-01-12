@@ -1,4 +1,5 @@
 import { html, css, LitElement, customElement, property, PropertyValues } from 'lit-element';
+import { ResizeObserver } from '@juggle/resize-observer';
 import { dimension } from '../dom';
 import renderer, { RenderingOptions } from '../renderer';
 
@@ -39,7 +40,7 @@ export default class WaterBox extends LitElement {
 
   constructor() {
     super();
-    const observer = new (<any>window).ResizeObserver(() => this.requestUpdate());
+    const observer = new ResizeObserver(() => this.requestUpdate());
     observer.observe(this);
   }
 
