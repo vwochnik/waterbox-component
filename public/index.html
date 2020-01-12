@@ -3,59 +3,74 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello world</title>
+    <title>Waterbox Component</title>
     <script type="module" src="/bundle.js"></script>
+<style>
+</style>
     <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        color: #303034;
+        background-color: #ebebef;
+        font-family: sans-serif;
+        margin: 0;
+      }
+      .header {
+        background: #404048;
+        padding: 1rem 0;
+        color: #a0a0a8;
+      }
+
+      h1 {
+        text-align: center;
+      }
     	.boxes {
     		display: flex;
     		flex-direction: row;
-        margin: 1rem auto;
+        justify-content: center;
+        background-color: #fff;
+        padding: 2rem 0;
     	}
     	.box {
-    		margin: 0 0.5rem;
+    		margin: 0 1rem;
     	}
     </style>
   </head>
   <body>
+    <div class="header">
+      <h1>Waterbox Component</h1>
+    </div>
   	<div class="boxes">
   		<div class="box">
-		  	<water-box separators="10" value="0" width="80" height="120"></water-box>
+		  	<water-box fill-color="rgba(127,127,224,0.8)" separators="10" value="0" width="80" height="120"></water-box>
   		</div>
   		<div class="box">
-		  	<water-box separators="8" value="20" width="80" height="120"></water-box>
+		  	<water-box fill-color="rgba(224,127,127,0.8)" separators="8" value="20" width="80" height="120"></water-box>
   		</div>
   		<div class="box">
-		  	<water-box separators="5" value="40" width="80" height="120"></water-box>
+		  	<water-box fill-color="rgba(127,224,127,0.8)" separators="5" value="40" width="80" height="120"></water-box>
   		</div>
   		<div class="box">
-		  	<water-box separators="2" value="60" width="80" height="120"></water-box>
-  		</div>
-  		<div class="box">
-		  	<water-box separators="3" value="80" width="80" height="120"></water-box>
-  		</div>
-  		<div class="box">
-		  	<water-box separators="6" value="100" width="80" height="120"></water-box>
+		  	<water-box background-color="rgba(64,64,64,0.8)" fill-color="rgba(192,192,192,0.8)" separators="2" value="60" width="80" height="120"></water-box>
   		</div>
   	</div>
-    <div class="boxes">
-      <div class="box">
-        <water-box separators="5" draw-top value="0" width="80" height="120"></water-box>
-      </div>
-      <div class="box">
-        <water-box separators="5" draw-top value="20" width="80" height="120"></water-box>
-      </div>
-      <div class="box">
-        <water-box separators="5" draw-top value="40" width="80" height="120"></water-box>
-      </div>
-      <div class="box">
-        <water-box separators="5" draw-top value="60" width="80" height="120"></water-box>
-      </div>
-      <div class="box">
-        <water-box separators="5" draw-top value="80" width="80" height="120"></water-box>
-      </div>
-      <div class="box">
-        <water-box separators="5" draw-top value="100" width="80" height="120"></water-box>
-      </div>
-    </div>
+    <script type="text/javascript">
+      const boxes = document.querySelectorAll("water-box");
+      console.info(boxes);
+      function animate() {
+        for (let i = 0; i < boxes.length; ++i) {
+          const box = boxes[i];
+          const increment = 1+i;
+          const oldValue = box.value;
+          const newValue = (oldValue + increment) % 100;
+          box.value = newValue || 0;
+        }
+        setTimeout(() => requestAnimationFrame(animate), 50);
+        ;
+      }
+      animate();
+    </script>
   </body>
 </html>
