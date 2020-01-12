@@ -1,14 +1,11 @@
-import { html, LitElement, customElement, property } from 'lit-element';
+import { html, css, LitElement, customElement, property, PropertyValues } from 'lit-element';
+import { dimension } from '../dom';
 import renderer, { RenderingOptions } from '../renderer';
 
 @customElement('water-box')
 export default class WaterBox extends LitElement {
-
-  @property({ type: Number })
-  width: number = 320;
-
-  @property({ type: Number })
-  height: number = 320;
+  width: number = 0;
+  height: number = 0;
 
   @property({ type: Number })
   value: number = 50;
@@ -33,6 +30,24 @@ export default class WaterBox extends LitElement {
 
   @property({ type: Number })
   contrast: number = 20;
+
+  static get styles() {
+    return css`
+      :host { display: block; width: 5rem; height: 7rem; overflow: hidden; }
+    `;
+  }
+
+  constructor() {
+    super();
+    const observer = new (<any>window).ResizeObserver(() => this.requestUpdate());
+    observer.observe(this);
+  }
+
+  update(changedProperties: PropertyValues) {
+    this.width = dimension(this, 'width');
+    this.height = dimension(this, 'height');
+    return super.update(changedProperties);
+  }
 
   render() {
     return html`<canvas width="${this.width}" height="${this.height}"></canvas>`;
