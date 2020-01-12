@@ -1,6 +1,6 @@
 {
   "name": "waterbox-component",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A simple web component displaying an isometric water box.",
   "main": "dist/bundle.js",
   "scripts": {
@@ -9,6 +9,11 @@
     "dev": "webpack-dev-server"
   },
   "author": "Vincent Wochnik <v.wochnik@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vwochnik/waterbox-component.git"
+  },
+  "homepage": "https://github.com/vwochnik/waterbox-component",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^12.12.17",
