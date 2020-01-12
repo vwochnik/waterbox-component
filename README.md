@@ -64,3 +64,7 @@ Whether to draw the top rhombus of box. Example: `true`
 
 ## `contrast` / `contrast` (Number)
 Contast of light/dark colors. Example: `10`
+
+# License
+
+MIT
