@@ -109,6 +109,6 @@ water-box {
 	</tr>
 </table>
 
-# License
+## License
 
 MIT
