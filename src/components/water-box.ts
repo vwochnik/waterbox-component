@@ -13,17 +13,17 @@ export default class WaterBox extends LitElement {
   @property({ type: Number })
   value: number = 50;
 
-  @property({ type: String, attribute: 'border-color' })
-  borderColor: string = 'rgba(127,127,127,0.8)';
+  @property({ type: String, attribute: 'stroke-color' })
+  strokeColor: string = 'rgba(127,127,127,0.8)';
 
   @property({ type: Number, attribute: 'border-width' })
-  borderWidth: number = 1;
+  strokeWidth: number = 1;
 
   @property({ type: String, attribute: 'fill-color' })
   fillColor: string = 'rgba(127,127,224,0.8)';
 
-  @property({ type: String, attribute: 'background-color' })
-  backgroundColor: string = 'rgba(128,128,128,0.4)';
+  @property({ type: String, attribute: 'box-color' })
+  boxColor: string = 'rgba(128,128,128,0.4)';
 
   @property({ type: Number })
   separators: number = 5;
@@ -46,10 +46,10 @@ export default class WaterBox extends LitElement {
         const options: RenderingOptions = {
           width: this.width,
           height: this.height,
-          borderColor: this.borderColor,
+          strokeColor: this.strokeColor,
           fillColor: this.fillColor,
-          backgroundColor: this.backgroundColor,
-          borderWidth: this.borderWidth,
+          boxColor: this.boxColor,
+          strokeWidth: this.strokeWidth,
           separators: this.separators,
           drawTop: this.drawTop,
           contrast: this.contrast,

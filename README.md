@@ -39,17 +39,17 @@ Height of component in pixels. Example: `200`
 ## `value` / `value` (Number)
 Percentual fill level of water. Example: `50`
 
-## `borderColor` / `border-color` (String)
+## `strokeColor` / `stroke-color` (String)
 Stroke color of box. Example: `rgba(0,0,0,0.5)`
 
 ## `fillColor` / `fill-color` (String)
 Fill color of water. Example: `rgba(127,127,192,0.8)`
 
-## `backgroundColor` / `background-color` (String)
+## `boxColor` / `box-color` (String)
 Fill color of box. Example: `rgba(127,127,127,0.6)`
 
-## `borderWidth` / `border-width` (Number)
-Width of borders in pixels. Example: `2`
+## `strokeWidth` / `stroke-width` (Number)
+Width of strokes in pixels. Example: `2`
 
 ## `separators` / `separators` (Number)
 Number of separators. Example: `5`
