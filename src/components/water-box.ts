@@ -14,7 +14,7 @@ export default class WaterBox extends LitElement {
   @property({ type: String, attribute: 'stroke-color' })
   strokeColor: string = 'rgba(127,127,127,0.8)';
 
-  @property({ type: Number, attribute: 'border-width' })
+  @property({ type: Number, attribute: 'stroke-width' })
   strokeWidth: number = 1;
 
   @property({ type: String, attribute: 'fill-color' })

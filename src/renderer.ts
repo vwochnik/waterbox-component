@@ -39,7 +39,8 @@ export default function renderer(ctx: CanvasRenderingContext2D, options: Renderi
     ctx.lineWidth = strokeWidth;
     ctx.lineCap = "round";
 
-    const rect: Area = { x: strokeWidth/2, y: strokeWidth/2, w: width - strokeWidth - 1, h: height - strokeWidth - 1 },
+    const actualWidth = Math.min(width, height),
+          rect: Area = { x: width/2 - actualWidth/2 + strokeWidth/2, y: strokeWidth/2, w: actualWidth - strokeWidth - 1, h: height - strokeWidth - 1 },
           size: Size = { w: rect.w, h: rect.w/2 };
 
     const bottomRhombusArea: Area = { x: rect.x, y: rect.y + rect.h - size.h, w: size.w, h: size.h };
